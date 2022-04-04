@@ -22,15 +22,11 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/(?<path>.*), /$\{path}
-            - name: Hystrix
+            - name: breaker
               args:
-                name: hystrixFx
+                name: circuitbreaker
                 fallbackUri: forward:/api/fallback
 
-eureka:
-  client:
-    service-url:
-      default-zone: http://localhost:8761/eureka
 
 management:
   endpoint:
